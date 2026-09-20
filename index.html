@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="NORDÉA — a premium boutique hotel concept on the northern coast.">
+  <meta name="theme-color" content="#11110f">
+
+  <title>NORDÉA — Boutique Hotel</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --bg: #11110f;
+      --paper: #f1eee7;
+      --muted: #b7b2a7;
+      --line: rgba(241, 238, 231, 0.16);
+      --gold: #c9ad7b;
+      --dark: #191815;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--paper);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    /* NAV */
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 20px 0;
+      background: rgba(17, 17, 15, 0.72);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 22px;
+      letter-spacing: 5px;
+      font-weight: 600;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .nav-links a {
+      opacity: .75;
+      transition: .25s;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+      color: var(--gold);
+    }
+
+    .nav-book {
+      padding: 10px 18px;
+      border: 1px solid var(--line);
+    }
+
+    .menu-btn {
+      display: none;
+      border: 0;
+      background: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      padding: 150px 0 80px;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(0,0,0,.25),
+          rgba(0,0,0,.78)
+        ),
+        url("https://images.unsplash.com/photo-1601918774946-25832a4be0d6?auto=format&fit=crop&w=2200&q=85")
+        center/cover;
+    }
+
+    .hero-content {
+      max-width: 760px;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 12px;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(58px, 9vw, 118px);
+      line-height: .95;
+      font-weight: 500;
+      letter-spacing: -4px;
+      max-width: 850px;
+    }
+
+    .hero-text {
+      max-width: 550px;
+      color: #d3cfc6;
+      font-size: 17px;
+      margin: 30px 0;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 25px;
+      border: 1px solid var(--paper);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: 11px;
+      transition: .25s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--paper);
+      color: var(--dark);
+    }
+
+    .btn-primary:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+
+    .btn-outline:hover {
+      background: white;
+      color: var(--dark);
+    }
+
+    /* SECTIONS */
+
+    section {
+      padding: 120px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+
+    .section-title {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(42px, 6vw, 70px);
+      font-weight: 500;
+      line-height: 1;
+    }
+
+    .section-copy {
+      max-width: 420px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    /* ROOMS */
+
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .room-card {
+      background: #171714;
+      border: 1px solid rgba(255,255,255,.07);
+      overflow: hidden;
+    }
+
+    .room-image {
+      height: 380px;
+      overflow: hidden;
+    }
+
+    .room-image img {
+      height: 100%;
+      transition: transform .6s ease;
+    }
+
+    .room-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .room-info {
+      padding: 25px;
+    }
+
+    .room-name {
+      font-family: "Playfair Display", serif;
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .room-description {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .room-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+    }
+
+    .price {
+      color: var(--gold);
+      font-size: 14px;
+    }
+
+    .details {
+      text-transform: uppercase;
+      letter-spacing: 1.3px;
+      font-size: 10px;
+    }
+
+    /* HOUSE */
+
+    .house {
+      background: var(--paper);
+      color: var(--dark);
+    }
+
+    .house-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .house-image {
+      height: 650px;
+    }
+
+    .house-image img {
+      height: 100%;
+    }
+
+    .house-copy h2 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(46px, 6vw, 76px);
+      font-weight: 500;
+      line-height: 1;
+      margin-bottom: 30px;
+    }
+
+    .house-copy p {
+      color: #656158;
+      margin-bottom: 18px;
+      max-width: 500px;
+    }
+
+    .house-copy .btn {
+      border-color: var(--dark);
+      margin-top: 15px;
+    }
+
+    /* QUOTE */
+
+    .quote {
+      text-align: center;
+      padding: 150px 20px;
+    }
+
+    .quote-mark {
+      color: var(--gold);
+      font-size: 42px;
+      margin-bottom: 25px;
+    }
+
+    .quote-text {
+      max-width: 850px;
+      margin: 0 auto;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(34px, 5vw, 62px);
+      line-height: 1.15;
+    }
+
+    .quote-author {
+      margin-top: 30px;
+      color: var(--muted);
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 2px;
+    }
+
+    /* GALLERY */
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+    }
+
+    .gallery-item img {
+      height: 100%;
+      transition: transform .5s;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.04);
+    }
+
+    .gallery-item:nth-child(1) {
+      grid-column: span 7;
+      height: 500px;
+    }
+
+    .gallery-item:nth-child(2) {
+      grid-column: span 5;
+      height: 500px;
+    }
+
+    .gallery-item:nth-child(3) {
+      grid-column: span 4;
+      height: 360px;
+    }
+
+    .gallery-item:nth-child(4) {
+      grid-column: span 4;
+      height: 360px;
+    }
+
+    .gallery-item:nth-child(5) {
+      grid-column: span 4;
+      height: 360px;
+    }
+
+    /* BOOKING */
+
+    .booking {
+      background: #191815;
+    }
+
+    .booking-box {
+      max-width: 1000px;
+      margin: auto;
+      border: 1px solid var(--line);
+      padding: 50px;
+    }
+
+    .booking-title {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(42px, 6vw, 70px);
+      margin-bottom: 12px;
+    }
+
+    .booking-subtitle {
+      color: var(--muted);
+      margin-bottom: 40px;
+    }
+
+    .booking-form {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    input,
+    select {
+      width: 100%;
+      height: 52px;
+      border: 1px solid var(--line);
+      background: #11110f;
+      color: var(--paper);
+      padding: 0 15px;
+      outline: none;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: var(--gold);
+    }
+
+    .booking-note {
+      color: #77736b;
+      font-size: 11px;
+      margin-top: 18px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 45px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    /* TOAST */
+
+    .toast {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      background: var(--paper);
+      color: var(--dark);
+      padding: 16px 22px;
+      z-index: 200;
+      transform: translateY(120px);
+      transition: .35s;
+      font-size: 13px;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 800px) {
+
+      .container {
+        width: min(100% - 28px, 1180px);
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 72px;
+        left: 14px;
+        right: 14px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 15px;
+        background: rgba(17,17,15,.97);
+        border: 1px solid var(--line);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 14px 10px;
+      }
+
+      .nav-book {
+        text-align: center;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      h1 {
+        letter-spacing: -2px;
+      }
+
+      section {
+        padding: 85px 0;
+      }
+
+      .section-head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .rooms-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .room-image {
+        height: 420px;
+      }
+
+      .house-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .house-image {
+        height: 450px;
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .gallery-item:nth-child(n) {
+        grid-column: span 1;
+        height: 260px;
+      }
+
+      .gallery-item:first-child {
+        grid-column: 1 / -1;
+        height: 360px;
+      }
+
+      .booking-box {
+        padding: 28px 20px;
+      }
+
+      .booking-form {
+        grid-template-columns: 1fr;
+      }
+
+      .field.full {
+        grid-column: auto;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 480px) {
+
+      .hero {
+        min-height: 90vh;
+        padding-bottom: 55px;
+      }
+
+      .hero-text {
+        font-size: 15px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .room-image {
+        height: 340px;
+      }
+
+      .house-image {
+        height: 350px;
+      }
+
+      .gallery-item:nth-child(n) {
+        height: 220px;
+      }
+
+      .gallery-item:first-child {
+        height: 280px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="nav">
+    <div class="container nav-inner">
+
+      <a href="#" class="logo">NORDÉA</a>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+        ☰
+      </button>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#rooms">Rooms</a>
+        <a href="#house">The House</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#booking" class="nav-book">Book</a>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <main>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+      <div class="container hero-content">
+
+        <div class="eyebrow">
+          Boutique hotel · Northern coast
+        </div>
+
+        <h1>
+          Stay somewhere quiet.
+        </h1>
+
+        <p class="hero-text">
+          A secluded boutique hotel shaped by northern landscapes,
+          slow mornings and considered design.
+        </p>
+
+        <div class="hero-actions">
+
+          <a href="#booking" class="btn btn-primary">
+            Reserve a stay
+          </a>
+
+          <a href="#rooms" class="btn btn-outline">
+            Explore rooms
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ROOMS -->
+
+    <section id="rooms">
+
+      <div class="container">
+
+        <div class="section-head">
+
+          <h2 class="section-title">
+            Rooms & suites
+          </h2>
+
+          <p class="section-copy">
+            Three carefully designed spaces, each created
+            for uninterrupted rest and long views.
+          </p>
+
+        </div>
+
+
+        <div class="rooms-grid">
+
+          <article class="room-card">
+
+            <div class="room-image">
+              <img
+                src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1200&q=85"
+                alt="North Room"
+                loading="lazy"
+              >
+            </div>
+
+            <div class="room-info">
+
+              <h3 class="room-name">
+                North Room
+              </h3>
+
+              <p class="room-description">
+                A calm private room with warm oak,
+                linen textures and coastal views.
+              </p>
+
+              <div class="room-bottom">
+                <span class="price">€180 / night</span>
+                <span class="details">01 · 24 m²</span>
+              </div>
+
+            </div>
+
+          </article>
+
+
+          <article class="room-card">
+
+            <div class="room-image">
+              <img
+                src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=85"
+                alt="Oak Suite"
+                loading="lazy"
+              >
+            </div>
+
+            <div class="room-info">
+
+              <h3 class="room-name">
+                Oak Suite
+              </h3>
+
+              <p class="room-description">
+                A spacious suite with a separate lounge
+                and deep soaking bathtub.
+              </p>
+
+              <div class="room-bottom">
+                <span class="price">€240 / night</span>
+                <span class="details">02 · 38 m²</span>
+              </div>
+
+            </div>
+
+          </article>
+
+
+          <article class="room-card">
+
+            <div class="room-image">
+              <img
+                src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1200&q=85"
+                alt="Terrace Suite"
+                loading="lazy"
+              >
+            </div>
+
+            <div class="room-info">
+
+              <h3 class="room-name">
+                Terrace Suite
+              </h3>
+
+              <p class="room-description">
+                Our signature suite with a private terrace
+                overlooking the surrounding landscape.
+              </p>
+
+              <div class="room-bottom">
+                <span class="price">€310 / night</span>
+                <span class="details">03 · 52 m²</span>
+              </div>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- HOUSE -->
+
+    <section id="house" class="house">
+
+      <div class="container house-grid">
+
+        <div class="house-image">
+
+          <img
+            src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1600&q=85"
+            alt="Nordéa hotel exterior"
+            loading="lazy"
+          >
+
+        </div>
+
+        <div class="house-copy">
+
+          <div class="eyebrow">
+            The house
+          </div>
+
+          <h2>
+            Designed for doing less.
+          </h2>
+
+          <p>
+            NORDÉA is a small retreat built around the idea
+            that luxury does not need to be loud.
+          </p>
+
+          <p>
+            Natural materials, quiet interiors and a close
+            relationship with the landscape create a place
+            where the outside world feels deliberately distant.
+          </p>
+
+          <a href="#booking" class="btn">
+            Plan your stay
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- QUOTE -->
+
+    <section class="quote">
+
+      <div class="quote-mark">
+        “
+      </div>
+
+      <div class="quote-text">
+        The best kind of luxury is having nowhere else to be.
+      </div>
+
+      <div class="quote-author">
+        NORDÉA · Northern Coast
+      </div>
+
+    </section>
+
+
+    <!-- GALLERY -->
+
+    <section id="gallery">
+
+      <div class="container">
+
+        <div class="section-head">
+
+          <h2 class="section-title">
+            A slower view
+          </h2>
+
+          <p class="section-copy">
+            Interiors, landscapes and small details
+            from the NORDÉA experience.
+          </p>
+
+        </div>
+
+
+        <div class="gallery-grid">
+
+          <div class="gallery-item">
+            <img
+              src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=85"
+              alt="Hotel interior"
+              loading="lazy"
+            >
+          </div>
+
+          <div class="gallery-item">
+            <img
+              src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1400&q=85"
+              alt="Boutique hotel interior"
+              loading="lazy"
+            >
+          </div>
+
+          <div class="gallery-item">
+            <img
+              src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1200&q=85"
+              alt="Minimal hotel room"
+              loading="lazy"
+            >
+          </div>
+
+          <div class="gallery-item">
+            <img
+              src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85"
+              alt="Luxury interior"
+              loading="lazy"
+            >
+          </div>
+
+          <div class="gallery-item">
+            <img
+              src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1200&q=85"
+              alt="Hotel pool"
+              loading="lazy"
+            >
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- BOOKING -->
+
+    <section id="booking" class="booking">
+
+      <div class="container">
+
+        <div class="booking-box">
+
+          <div class="eyebrow">
+            Reservations
+          </div>
+
+          <h2 class="booking-title">
+            Your stay starts here.
+          </h2>
+
+          <p class="booking-subtitle">
+            Choose your dates and preferred room.
+          </p>
+
+
+          <form class="booking-form" id="bookingForm">
+
+            <div class="field">
+
+              <label for="checkin">
+                Check-in
+              </label>
+
+              <input
+                type="date"
+                id="checkin"
+                required
+              >
+
+            </div>
+
+
+            <div class="field">
+
+              <label for="checkout">
+                Check-out
+              </label>
+
+              <input
+                type="date"
+                id="checkout"
+                required
+              >
+
+            </div>
+
+
+            <div class="field">
+
+              <label for="guests">
+                Guests
+              </label>
+
+              <select id="guests">
+
+                <option value="1">
+                  1 guest
+                </option>
+
+                <option value="2" selected>
+                  2 guests
+                </option>
+
+                <option value="3">
+                  3 guests
+                </option>
+
+                <option value="4">
+                  4 guests
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <div class="field">
+
+              <label for="room">
+                Room
+              </label>
+
+              <select id="room">
+
+                <option>
+                  North Room
+                </option>
+
+                <option>
+                  Oak Suite
+                </option>
+
+                <option>
+                  Terrace Suite
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <div class="field full">
+
+              <label for="email">
+                Email
+              </label>
+
+              <input
+                type="email"
+                id="email"
+                placeholder="you@example.com"
+                required
+              >
+
+            </div>
+
+
+            <div class="field full">
+
+              <button
+                type="submit"
+                class="btn btn-primary"
+              >
+                Request reservation
+              </button>
+
+            </div>
+
+          </form>
+
+
+          <p class="booking-note">
+            Concept booking form — no payment is processed.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="container footer-inner">
+
+      <div>
+        © 2026 NORDÉA · Concept project
+      </div>
+
+      <div>
+        Designed & developed as a portfolio project
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <div class="toast" id="toast">
+    Reservation request received.
+  </div>
+
+
+  <script>
+
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+      });
+
+    });
+
+
+    const checkin = document.getElementById("checkin");
+    const checkout = document.getElementById("checkout");
+
+    const today = new Date().toISOString().split("T")[0];
+
+    checkin.min = today;
+    checkout.min = today;
+
+
+    checkin.addEventListener("change", () => {
+
+      checkout.min = checkin.value;
+
+      if (checkout.value && checkout.value <= checkin.value) {
+        checkout.value = "";
+      }
+
+    });
+
+
+    const bookingForm = document.getElementById("bookingForm");
+    const toast = document.getElementById("toast");
+
+
+    bookingForm.addEventListener("submit", event => {
+
+      event.preventDefault();
+
+      if (!checkin.value || !checkout.value) {
+        return;
+      }
+
+      if (checkout.value <= checkin.value) {
+        alert("Check-out must be after check-in.");
+        return;
+      }
+
+      toast.classList.add("show");
+
+      bookingForm.reset();
+
+      checkin.min = today;
+      checkout.min = today;
+
+      setTimeout(() => {
+        toast.classList.remove("show");
+      }, 3500);
+
+    });
+
+  </script>
+
+</body>
+</html>
